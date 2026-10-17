@@ -1,5 +1,5 @@
 /* =============================================================
-   JOVI Smart Filter — efeitos leves da câmera (GSAP)
+   JOVI Smart Filter: efeitos leves da câmera (GSAP)
    Só entrada discreta e um escalonado nos valores da ficha.
    Não toca em app.js: observa o DOM que ele já escreve.
    ============================================================= */

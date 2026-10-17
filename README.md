@@ -1,4 +1,4 @@
-# JOVI Smart Filter — Challenge JOVI
+# JOVI Smart Filter: Challenge JOVI
 
 Front-end da câmera que troca o vocabulário técnico dos filtros pelo ambiente real do usuário.
 
@@ -78,10 +78,10 @@ css/
   slides.css        a apresentação
   tailwind.css      utilitários compilados (gerado)
 js/
-  core/             dados.js, motor.js, cenas.js — modelo, motor e cenas, compartilhados
-  site/             hero.js, site.js, efeitos.js — o index.html
-  app/              app.js, app-fx.js — a câmera
-  slides/           slides.js — a apresentação
+  core/             dados.js, motor.js, cenas.js: modelo, motor e cenas compartilhados
+  site/             hero.js, site.js, efeitos.js: páginas e scripts da solução
+  app/              app.js, app-fx.js: protótipo da câmera
+  slides/           slides.js: apresentação de slides
   vendor/           GSAP, ScrollTrigger e SplitText (3.13.0)
 assets/img/
   equipe/           retratos da equipe

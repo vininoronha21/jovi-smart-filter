@@ -1,5 +1,5 @@
 /* =============================================================
-   JOVI Smart Filter — camada de dados
+   JOVI Smart Filter: camada de dados
    Espelha as entidades modeladas na Sprint 1:
    PARAMETRO_AJUSTE · AMBIENTE · CONFIGURACAO_AMBIENTE · PRESET_USUARIO
    ============================================================= */
@@ -77,7 +77,7 @@ const AMBIENTES = [
   {
     id: 'museu', nome: 'Museu e galeria', categoria: 'Ambiente fechado',
     resumo: 'Luz controlada, cor fiel',
-    explicacao: 'Aqui a cor precisa ser fiel à obra, então a câmera quase não interfere — só evita estourar o branco da parede.',
+    explicacao: 'Aqui a cor precisa ser fiel à obra, então a câmera quase não interfere, apenas evita estourar o branco da parede.',
     valores: { contraste: 5, brilho: 0, saturacao: 0, exposicao: -0.1, calor: 0, sombras: 5, realces: -5 },
     pesos:   { saturacao: 1, exposicao: .8, contraste: .5, calor: .5, realces: .3, brilho: .2, sombras: .2 },
     leitura: { lux: 220, kelvin: 4000, verde: .08, ceu: 0, saturacao: .24 }

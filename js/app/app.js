@@ -1,5 +1,5 @@
 /* =============================================================
-   JOVI Smart Filter — controlador da interface
+   JOVI Smart Filter: controlador da interface
    ============================================================= */
 (() => {
 'use strict';
@@ -131,7 +131,7 @@ function desenharFicha() {
       <span class="rotulo">${p.nome}</span>
       <span class="valor mono" data-sinal="${sinal}">${formatar(p.id, v)}<span class="unidade">${p.unidade}</span></span>
     </li>`;
-  }).join('') || '<li><span class="rotulo">Sem ajuste</span><span class="valor">—</span></li>';
+  }).join('') || '<li><span class="rotulo">Sem ajuste</span><span class="valor">-</span></li>';
 }
 
 /* ---------- sliders ----------------------------------------- */
@@ -288,7 +288,7 @@ function mostrarSugestao(resultado) {
     resultado.confianca >= 70 ? 'Parece ' : 'Pode ser ';
   el.sugestaoIcone.innerHTML = svgIcone(resultado.ambiente.id, '');
   el.sugestaoMotivo.textContent =
-    `${resultado.confianca}% de certeza — ${Motor.explicarLeitura(resultado.leitura)}`;
+    `${resultado.confianca}% de certeza: ${Motor.explicarLeitura(resultado.leitura)}`;
   el.sugestao.hidden = false;
   clearTimeout(estado.fluxo);
   estado.fluxo = setTimeout(esconderSugestao, 9000);   // some sozinha, não bloqueia
@@ -305,7 +305,7 @@ function desenharSensores(leitura, ranking) {
     ['Verde no quadro', Math.round(leitura.verde * 100) + '%'],
     ['Céu no topo', Math.round(leitura.ceu * 100) + '%'],
     ['Saturação medida', Math.round(leitura.saturacao * 100) + '%'],
-    ['Horário', (leitura.hora != null ? String(Math.floor(leitura.hora)).padStart(2, '0') + 'h' : '—')]
+    ['Horário', (leitura.hora != null ? String(Math.floor(leitura.hora)).padStart(2, '0') + 'h' : '-')]
   ];
   el.sensores.innerHTML = linhas.map(([t, v]) =>
     `<div><dt>${t}</dt><dd class="mono">${v}</dd></div>`).join('');

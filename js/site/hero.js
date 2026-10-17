@@ -1,5 +1,5 @@
 /* =============================================================
-   JOVI Smart Filter — página de apresentação
+   JOVI Smart Filter: página de apresentação
    Reaproveita motor.js e cenas.js para o hero não ser uma
    imagem estática: é o mesmo código do protótipo, em miniatura.
    ============================================================= */
@@ -96,7 +96,7 @@ if (tabela) {
       <th scope="row" class="!text-neve-100 !normal-case !tracking-normal !text-[13px] !font-500">${a.nome}</th>
       ${ordem.map(id => {
         const v = a.valores[id] || 0;
-        return `<td class="${v === 0 ? '!text-neve-500' : ''}">${v === 0 ? '—' : formatar(id, v)}</td>`;
+        return `<td class="${v === 0 ? '!text-neve-500' : ''}">${v === 0 ? '-' : formatar(id, v)}</td>`;
       }).join('')}
     </tr>`).join('');
 }

@@ -1,5 +1,5 @@
 /* =============================================================
-   JOVI Smart Filter — cenas de demonstração
+   JOVI Smart Filter: cenas de demonstração
    Desenhadas em SVG para o projeto continuar 100% offline:
    nenhuma imagem externa, nenhum link fora da pasta entregue.
    ============================================================= */

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>JOVI Smart Filter — a câmera se configura pelo lugar onde você está</title>
-<meta name="description" content="Challenge JOVI — a câmera que troca o vocabulário técnico dos filtros pelo ambiente real do usuário.">
+<title>JOVI Smart Filter: A câmera que entende o seu ambiente</title>
+<meta name="description" content="Challenge JOVI: câmera inteligente que ajusta filtros automaticamente de acordo com o ambiente real.">
 <meta name="theme-color" content="#0B0B0F">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +41,7 @@
       <div>
         <h1 class="titulo-abertura" id="titulo-abertura"><span>Jovi</span><span>Smart</span><span>Filter</span></h1>
         <p class="abertura-sub">Adaptatividade inteligente de filtros para ambientes</p>
-        <p class="abertura-texto">A câmera entende o ambiente e ajuda o usuário a escolher o filtro ideal. Você diz onde está — ela mostra, em português, o que mudou na foto.</p>
+        <p class="abertura-texto">A câmera identifica o ambiente e sugere o filtro ideal. Ao selecionar onde você está, o aplicativo mostra em português as alterações aplicadas na foto.</p>
         <div class="acoes">
           <a href="app.html" class="botao-primario">Abrir a câmera</a>
           <a href="slides.html" class="botao-contorno">Ver a apresentação</a>
@@ -57,7 +57,7 @@
       <div class="demo">
         <div class="aparelho">
           <div class="aparelho-entalhe" aria-hidden="true"></div>
-          <div class="palco" id="heroPalco" style="aspect-ratio:9/16">
+          <div class="palco" id="heroPalco">
             <div class="palco-midia" id="heroMidia"></div>
             <div class="camada camada-temp" id="heroTemp"></div>
             <div class="camada camada-sombras" id="heroSombras"></div>
@@ -80,7 +80,7 @@
           <li>Muitos usuários não sabem qual filtro usar em cada ambiente;</li>
           <li>O excesso de opções gera indecisão;</li>
           <li>As fotos podem ficar com aparência artificial ou mal ajustadas;</li>
-          <li>Usuários não entendem termos técnicos como: Dramático quente, Vibrante…</li>
+          <li>Usuários não entendem termos técnicos como "Dramático quente" ou "Vibrante".</li>
         </ol>
         <p class="resultado"><small>Resultado</small>Experiência confusa e pouco prática.</p>
       </div>
@@ -92,7 +92,7 @@
   <section class="bloco" id="solucao" aria-labelledby="titulo-solucao">
     <div class="envelope">
       <h2 class="titulo-bloco" id="titulo-solucao">Nossa solução</h2>
-      <p class="texto-bloco">Criamos um sistema de <strong>Botões de Adaptatividade Inteligente</strong>. Ao invés de escolher filtros técnicos, o usuário escolhe o ambiente em que está — 14 ambientes em quatro categorias. Cada um é um conjunto fechado de valores, calibrado por situação, com o peso de cada parâmetro declarado.</p>
+      <p class="texto-bloco">Desenvolvemos o sistema de <strong>Botões de Adaptatividade Inteligente</strong>. Em vez de escolher filtros com nomes técnicos, o usuário seleciona o ambiente em que está. São 14 ambientes distribuídos em quatro categorias, cada um calibrado com valores específicos para cada situação e os pesos de cada parâmetro declarados.</p>
       <p class="texto-bloco"><strong>Objetivo:</strong> tornar a câmera mais intuitiva, rápida e inteligente.</p>
       <div class="tabela-moldura">
         <table class="tabela">
@@ -111,10 +111,10 @@
     <div class="envelope">
       <h2 class="titulo-bloco" id="titulo-jornada">Jornada do usuário</h2>
       <ol class="jornada">
-        <li><span class="jornada-num">1</span><h3>O usuário abre a câmera.</h3><p>Sem grade de filtros: só o visor, o obturador e o ambiente atual.</p></li>
-        <li><span class="jornada-num">2</span><h3>Seleciona o ambiente atual.</h3><p>Ou aceita a sugestão da detecção, que mostra o grau de certeza.</p></li>
-        <li><span class="jornada-num">3</span><h3>Toca no ambiente — o efeito aplica na hora.</h3><p>Não existe botão de confirmar.</p></li>
-        <li><span class="jornada-num">4</span><h3>Ajusta se quiser; a câmera mostra o que mudou.</h3><p>Iluminação, brilho, contraste, temperatura e outros parâmetros, cada um com escala.</p></li>
+        <li><span class="jornada-num">1</span><h3>O usuário abre a câmera.</h3><p>Sem grade de filtros: apenas o visor, o obturador e o ambiente atual.</p></li>
+        <li><span class="jornada-num">2</span><h3>Seleciona o ambiente atual.</h3><p>Ou aceita a sugestão da detecção automática com base na luz e nos sensores.</p></li>
+        <li><span class="jornada-num">3</span><h3>Toque no ambiente para aplicar na hora</h3><p>O efeito acontece de forma imediata, sem necessidade de confirmação.</p></li>
+        <li><span class="jornada-num">4</span><h3>Ajusta se quiser; a câmera mostra o que mudou.</h3><p>Iluminação, brilho, contraste, temperatura e outros parâmetros com escala declarada.</p></li>
       </ol>
     </div>
   </section>
@@ -205,7 +205,7 @@
   <section class="bloco" id="motor" aria-labelledby="titulo-motor">
     <div class="envelope">
       <h2 class="titulo-bloco" id="titulo-motor">Detecção que pode ser auditada</h2>
-      <p class="texto-bloco">Nada de caixa-preta. Cada ambiente tem uma assinatura de sensores, e a sugestão é a menor distância entre a leitura atual e essas assinaturas. Por isso o motor sempre consegue explicar a escolha em uma frase — e o usuário pode discordar dele.</p>
+      <p class="texto-bloco">O algoritmo funciona de forma transparente. Cada ambiente possui uma assinatura baseada em sensores, e o sistema recomenda a opção mais próxima da leitura real. O motor explica cada sugestão de forma objetiva, dando total liberdade para o usuário aceitar ou recusar.</p>
       <dl class="sinais">
         <div><dt>Luz ambiente</dt><dd>Separa externo, interno e noite. Pesa 38% na decisão, porque é o sinal mais estável.</dd></div>
         <div><dt>Temperatura de cor</dt><dd>Distingue lâmpada quente de fluorescente fria e de luz natural. Pesa 22%.</dd></div>

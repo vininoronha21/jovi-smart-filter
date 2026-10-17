@@ -1,5 +1,5 @@
 /* =============================================================
-   JOVI Smart Filter — motor da apresentação
+   JOVI Smart Filter: motor da apresentação
    Palco fixo de 1920×1080 escalado ao viewport.
    → / Espaço / PageDown / clique: próximo passo ou slide
    ← / PageUp: volta · Home/End · O: visão geral · F: tela cheia

@@ -1,5 +1,5 @@
 /* =============================================================
-   JOVI Smart Filter — motor
+   JOVI Smart Filter: motor
    1. Presets    : ambiente + estilo + preferência do usuário
    2. Renderização: parâmetros -> filtros CSS e camadas de mistura
    3. Sugestão   : leitura de sensores -> ambiente provável

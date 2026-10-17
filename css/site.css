@@ -1,5 +1,5 @@
 /* =============================================================
-   JOVI Smart Filter — a página da solução (css/site.css)
+   JOVI Smart Filter: a página da solução (css/site.css)
    Só o index.html carrega este arquivo. Mobile first: a base é o
    celular e os min-width ampliam. Direção visual igual à do deck.
    ============================================================= */
@@ -101,8 +101,35 @@
 }
 
 .demo .aparelho {
-  width: min(250px, 72vw);
+  width: min(240px, 68vw);
   margin: 0 auto;
+  border-radius: var(--raio-aparelho);
+  overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+.demo #heroPalco,
+.demo .palco {
+  aspect-ratio: 9 / 19.5 !important;
+  border-radius: calc(var(--raio-aparelho) - 10px) !important;
+  overflow: hidden !important;
+  -webkit-mask-image: -webkit-radial-gradient(white, black) !important;
+  mask-image: radial-gradient(white, black) !important;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+.demo .palco-midia,
+.demo .palco-midia > *,
+.demo .cena,
+.demo .camada {
+  border-radius: calc(var(--raio-aparelho) - 10px) !important;
+  overflow: hidden !important;
+  -webkit-mask-image: -webkit-radial-gradient(white, black) !important;
+  mask-image: radial-gradient(white, black) !important;
 }
 
 .demo-chips {

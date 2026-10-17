@@ -1,5 +1,5 @@
 /* =============================================================
-   JOVI Smart Filter — interações da página da solução
+   JOVI Smart Filter: interações da página da solução
    O texto dos ambientes vem de dados.js (o mesmo do protótipo);
    a foto alterna sem/com filtro no toque, o comparador arrasta e
    a linha da jornada enche com a rolagem (GSAP + ScrollTrigger).

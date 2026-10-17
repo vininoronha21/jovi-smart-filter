@@ -1,5 +1,5 @@
 /* =============================================================
-   JOVI Smart Filter — efeitos da página da solução (GSAP)
+   JOVI Smart Filter: efeitos da página da solução (GSAP)
    Abertura em timeline, números que contam, títulos revelados por
    linha, blocos que entram na rolagem, paralaxe leve nos celulares
    e barra de progresso. Tudo dentro de gsap.matchMedia(): com

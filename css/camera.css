@@ -1,5 +1,5 @@
 /* =============================================================
-   JOVI Smart Filter — a câmera (css/camera.css)
+   JOVI Smart Filter: a câmera (css/camera.css)
    Aparelho Jovi, palco com as camadas de mistura, folha de
    seleção, ficha, sliders, sensores, galeria e recibo. Usado
    pelo app.html e pela demonstração da abertura do index.html.
@@ -32,12 +32,32 @@
   border-radius: calc(var(--raio-aparelho) - 10px);
   background: #04050A;
   contain: paint;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
-.palco-midia { position: absolute; inset: 0; will-change: filter; }
-.palco-midia > * { width: 100%; height: 100%; display: block; }
+.palco-midia {
+  position: absolute; inset: 0; will-change: filter;
+  border-radius: inherit;
+  overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+}
+.palco-midia > * {
+  width: 100%; height: 100%; display: block;
+  border-radius: inherit;
+  overflow: hidden;
+}
 .palco-video { object-fit: cover; }
-.cena { width: 100%; height: 100%; display: block; }
+.cena {
+  width: 100%; height: 100%; display: block;
+  border-radius: inherit;
+  overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+}
 
 .palco-original { position: absolute; inset: 0; z-index: 6; clip-path: inset(0 50% 0 0); }
 .palco-original > * { width: 100%; height: 100%; display: block; }
