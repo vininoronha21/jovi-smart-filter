@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0B0B0F">
+<title>Câmera · JOVI Smart Filter</title>
+<meta name="description" content="Protótipo funcional da câmera JOVI Smart Filter: escolha o ambiente e a câmera se configura sozinha.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tailwind.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-tinta-900 text-neve-100 antialiased">
+
+<a href="#palco" class="pular-link">Ir direto para a câmera</a>
+
+<!-- ============ topo ============ -->
+<header class="topo">
+  <div class="envelope">
+    <a href="index.html" class="marca"><span class="marca-ponto" aria-hidden="true"></span>JOVI <span>Smart Filter</span></a>
+    <nav class="nav" aria-label="Páginas">
+      <a href="index.html">A solução</a>
+      <a href="app.html" aria-current="page">Câmera</a>
+      <a href="slides.html">Apresentação</a>
+    </nav>
+  </div>
+</header>
+
+<main class="envelope pb-24 pt-6 lg:pt-10">
+
+  <div class="grid gap-8 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:gap-10">
+
+    <!-- ============ coluna 1: o aparelho ============ -->
+    <div class="mx-auto w-full max-w-[340px] lg:sticky lg:top-20 lg:self-start">
+
+      <div class="aparelho">
+        <div class="aparelho-entalhe" aria-hidden="true"></div>
+
+        <div class="palco" id="palco">
+
+          <!-- mídia filtrada -->
+          <div class="palco-midia" id="palcoMidia">
+            <video id="video" class="palco-video hidden" playsinline autoplay muted></video>
+            <div id="palcoCena" class="h-full w-full"></div>
+          </div>
+
+          <!-- camadas de cor: temperatura, sombras, realces -->
+          <div class="camada camada-temp"    id="camadaTemp"    aria-hidden="true"></div>
+          <div class="camada camada-sombras" id="camadaSombras" aria-hidden="true"></div>
+          <div class="camada camada-realces" id="camadaRealces" aria-hidden="true"></div>
+
+          <!-- cópia sem filtro, usada no comparador -->
+          <div class="palco-original" id="palcoOriginal" hidden aria-hidden="true"></div>
+          <div class="divisor" id="divisor" hidden>
+            <span class="divisor-alca"></span>
+            <span class="divisor-rotulo divisor-rotulo--esq">Sem filtro</span>
+            <span class="divisor-rotulo divisor-rotulo--dir">Com filtro</span>
+          </div>
+
+          <div class="grade-tercos" id="gradeTercos" aria-hidden="true"></div>
+
+          <!-- chrome superior -->
+          <div class="palco-topo">
+            <span class="relogio" id="relogio">9:41</span>
+            <button type="button" id="btnAuto" class="pilula-auto" aria-pressed="true">
+              <span class="pilula-led" aria-hidden="true"></span>Detecção automática
+            </button>
+            <button type="button" id="btnGrade" class="botao-redondo" aria-pressed="false" title="Grade de terços" aria-label="Mostrar grade de terços">
+              <svg viewBox="0 0 24 24" class="icone"><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+            </button>
+          </div>
+
+          <!-- cartão de sugestão -->
+          <div class="sugestao" id="sugestao" hidden role="status">
+            <div class="sugestao-icone" id="sugestaoIcone" aria-hidden="true"></div>
+            <div class="min-w-0 flex-1">
+              <p class="sugestao-titulo">Parece <strong id="sugestaoNome">Praia e mar</strong></p>
+              <p class="sugestao-motivo" id="sugestaoMotivo"></p>
+            </div>
+            <button type="button" id="btnAceitarSugestao" class="sugestao-aceitar">Aplicar</button>
+            <button type="button" id="btnRecusarSugestao" class="sugestao-fechar" aria-label="Dispensar sugestão">
+              <svg viewBox="0 0 24 24" class="icone"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+          </div>
+
+          <!-- chrome inferior -->
+          <div class="palco-base">
+            <button type="button" id="btnAbrirSeletor" class="chip-ambiente" aria-haspopup="dialog" aria-expanded="false">
+              <span class="chip-ambiente-icone" id="chipIcone" aria-hidden="true"></span>
+              <span class="text-left leading-tight">
+                <span class="block text-[10px] uppercase tracking-[.14em] text-neve-400">Ambiente</span>
+                <span class="block text-[13px] font-600" id="chipNome">Nenhum</span>
+              </span>
+              <svg viewBox="0 0 24 24" class="icone h-3.5 w-3.5 text-neve-400"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+
+            <div class="controles">
+              <button type="button" id="btnGaleria" class="miniatura" aria-label="Abrir galeria">
+                <span id="miniaturaVazia" class="miniatura-vazia"></span>
+                <img id="miniaturaImg" alt="" hidden>
+              </button>
+              <button type="button" id="btnCapturar" class="obturador" aria-label="Tirar foto"><span></span></button>
+              <button type="button" id="btnComparar" class="botao-redondo botao-redondo--base" aria-pressed="false" aria-label="Comparar com a foto sem filtro">
+                <svg viewBox="0 0 24 24" class="icone"><path d="M12 3v18M7 7l-4 5 4 5M17 7l4 5-4 5"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- folha de seleção de ambiente -->
+          <div class="folha-fundo" id="folhaFundo" hidden></div>
+          <section class="folha" id="folha" role="dialog" aria-modal="true" aria-labelledby="folhaTitulo" hidden>
+            <div class="folha-puxador" aria-hidden="true"></div>
+            <div class="flex items-baseline justify-between gap-3">
+              <h2 id="folhaTitulo" class="font-display text-[18px] font-700 tracking-[-.02em]">Onde você está?</h2>
+              <button type="button" id="btnFecharFolha" class="text-[12px] text-neve-400 hover:text-neve-100">Fechar</button>
+            </div>
+            <p class="mt-1 text-[12px] leading-snug text-neve-400">Toque para ver o efeito na hora. Não precisa confirmar.</p>
+
+            <label class="busca">
+              <svg viewBox="0 0 24 24" class="icone h-4 w-4 text-neve-400"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+              <input type="search" id="buscaAmbiente" placeholder="Buscar ambiente" autocomplete="off">
+            </label>
+
+            <div class="folha-rolagem" id="folhaLista"></div>
+          </section>
+        </div>
+      </div>
+
+      <!-- fonte da imagem -->
+      <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
+        <button type="button" id="btnCamera" class="botao-secundario">Usar minha câmera</button>
+        <div class="seletor-cena">
+          <label for="selCena" class="sr-only">Cena de demonstração</label>
+          <select id="selCena" class="campo-select"></select>
+        </div>
+      </div>
+      <p class="mt-2 text-center text-[11.5px] leading-snug text-neve-500" id="avisoFonte">
+        Sem câmera disponível? As cenas de demonstração trazem as mesmas leituras de sensor que o aparelho teria no local.
+      </p>
+    </div>
+
+    <!-- ============ coluna 2: o que a câmera fez ============ -->
+    <div class="min-w-0 space-y-6">
+
+      <!-- ficha: o diferencial do projeto -->
+      <section class="ficha" aria-live="polite">
+        <div class="ficha-cabecalho">
+          <div>
+            <h2 class="font-display text-[26px] font-800 leading-[1.05] tracking-[-.03em] text-neve-100 sm:text-[32px]" id="fichaTitulo">Escolha um ambiente para começar</h2>
+            <p class="mt-1 max-w-[52ch] text-[13.5px] leading-relaxed text-neve-400" id="fichaExplicacao">
+              A câmera abre sem nenhum ajuste. Toque em “Ambiente” no aparelho ao lado, ou deixe a detecção automática sugerir.
+            </p>
+          </div>
+          <span class="selo" id="fichaSelo" hidden>Preferência sua</span>
+        </div>
+
+        <ul class="ficha-valores" id="fichaValores"></ul>
+
+        <div class="ficha-rodape">
+          <div class="flex flex-wrap items-center gap-2" id="estilos" role="group" aria-label="Estilo aplicado sobre o ambiente"></div>
+          <div class="ml-auto flex items-center gap-2">
+            <button type="button" id="btnSalvarPreferencia" class="botao-secundario" disabled>Salvar como meu padrão</button>
+            <button type="button" id="btnRedefinir" class="botao-secundario" disabled>Voltar ao original</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ajuste fino: escondido por padrão -->
+      <section class="painel">
+        <button type="button" class="painel-cabecalho" id="btnAjuste" aria-expanded="false" aria-controls="ajusteCorpo">
+          <span>
+            <span class="painel-titulo">Ajuste fino</span>
+            <span class="painel-sub">Sete parâmetros, com a escala de cada um. Para quem quer controlar.</span>
+          </span>
+          <svg viewBox="0 0 24 24" class="icone painel-seta"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div id="ajusteCorpo" class="painel-corpo" hidden>
+          <p class="mb-4 text-[12.5px] leading-snug text-neve-400">
+            Os parâmetros aparecem na ordem de importância para o ambiente escolhido — o peso vem do modelo de dados
+            <span class="mono text-neve-300">CONFIGURACAO_AMBIENTE.peso_importancia</span>.
+          </p>
+          <div id="sliders" class="space-y-4"></div>
+        </div>
+      </section>
+
+      <!-- leitura dos sensores -->
+      <section class="painel">
+        <button type="button" class="painel-cabecalho" id="btnSensores" aria-expanded="false" aria-controls="sensoresCorpo">
+          <span>
+            <span class="painel-titulo">Leitura dos sensores</span>
+            <span class="painel-sub">O que a detecção automática está enxergando agora.</span>
+          </span>
+          <svg viewBox="0 0 24 24" class="icone painel-seta"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div id="sensoresCorpo" class="painel-corpo" hidden>
+          <dl class="sensores" id="sensores"></dl>
+          <div class="mt-4">
+            <p class="text-[12.5px] font-500 text-neve-300">Ambientes mais prováveis</p>
+            <ol class="ranking" id="ranking"></ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- galeria -->
+      <section class="painel" id="secaoGaleria">
+        <div class="painel-cabecalho painel-cabecalho--estatico">
+          <span>
+            <span class="painel-titulo">Fotos desta sessão</span>
+            <span class="painel-sub">Cada captura guarda o ambiente, os valores e se a sugestão foi aceita.</span>
+          </span>
+          <button type="button" id="btnLimparGaleria" class="botao-secundario">Limpar</button>
+        </div>
+        <div class="painel-corpo">
+          <p id="galeriaVazia" class="text-[13px] text-neve-400">Nenhuma foto ainda. Toque no botão branco do aparelho.</p>
+          <div id="galeria" class="galeria"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<!-- recibo flutuante -->
+<div id="recibo" class="recibo" role="status" hidden>
+  <span class="recibo-check" aria-hidden="true">
+    <svg viewBox="0 0 24 24" class="icone"><path d="M5 13l4 4L19 7"/></svg>
+  </span>
+  <span>
+    <strong id="reciboTitulo"></strong>
+    <span class="mono" id="reciboValores"></span>
+  </span>
+</div>
+
+<canvas id="canvasAnalise" class="hidden" width="48" height="48"></canvas>
+<canvas id="canvasCaptura" class="hidden"></canvas>
+
+<!-- visualizador de foto -->
+<div class="visor" id="visor" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button type="button" id="btnFecharVisor" class="visor-fechar" aria-label="Fechar">
+    <svg viewBox="0 0 24 24" class="icone"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <figure class="visor-figura">
+    <img id="visorImg" alt="Foto capturada no protótipo">
+    <figcaption id="visorLegenda"></figcaption>
+  </figure>
+</div>
+
+<script src="js/dados.js"></script>
+<script src="js/cenas.js"></script>
+<script src="js/motor.js"></script>
+<script src="js/app.js"></script>
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/app-fx.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "jovi-smart-filter",
+  "version": "2.0.0",
+  "description": "Challenge JOVI - Sprint 2 - front-end da camera JOVI Smart Filter",
+  "private": true,
+  "scripts": {
+    "css": "tailwindcss -c tailwind.config.js -i build/input.css -o css/tailwind.css --minify"
+  },
+  "devDependencies": { "tailwindcss": "^3.4.17" }
+}

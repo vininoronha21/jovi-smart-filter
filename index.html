@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>JOVI Smart Filter — a câmera se configura pelo lugar onde você está</title>
+<meta name="description" content="Challenge JOVI — a câmera que troca o vocabulário técnico dos filtros pelo ambiente real do usuário.">
+<meta name="theme-color" content="#0B0B0F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tailwind.css">
+<link rel="stylesheet" href="css/style.css">
+<script>if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('gsap-hero');</script>
+</head>
+<body class="site bg-tinta-900 antialiased">
+
+<div class="progresso-pagina" aria-hidden="true"><span></span></div>
+
+<a href="#conteudo" class="pular-link">Ir para o conteúdo</a>
+
+<header class="topo">
+  <div class="envelope">
+    <a href="index.html" class="marca"><span class="marca-ponto" aria-hidden="true"></span>JOVI <span>Smart Filter</span></a>
+    <nav class="nav" aria-label="Páginas">
+      <a href="index.html" aria-current="page">A solução</a>
+      <a href="app.html">Câmera</a>
+      <a href="slides.html">Apresentação</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- ============ abertura ============ -->
+  <section class="abertura" aria-labelledby="titulo-abertura">
+    <div class="abertura-ceu" aria-hidden="true"></div>
+    <div class="envelope">
+      <div>
+        <h1 class="titulo-abertura" id="titulo-abertura"><span>Jovi</span><span>Smart</span><span>Filter</span></h1>
+        <p class="abertura-sub">Adaptatividade inteligente de filtros para ambientes</p>
+        <p class="abertura-texto">A câmera entende o ambiente e ajuda o usuário a escolher o filtro ideal. Você diz onde está — ela mostra, em português, o que mudou na foto.</p>
+        <div class="acoes">
+          <a href="app.html" class="botao-primario">Abrir a câmera</a>
+          <a href="slides.html" class="botao-contorno">Ver a apresentação</a>
+        </div>
+        <dl class="fatos">
+          <div><dt>ambientes mapeados</dt><dd>14</dd></div>
+          <div><dt>parâmetros com escala</dt><dd>7</dd></div>
+          <div><dt>toque para trocar</dt><dd>1</dd></div>
+        </dl>
+      </div>
+
+      <!-- demonstração ao vivo: o mesmo motor do protótipo -->
+      <div class="demo">
+        <div class="aparelho">
+          <div class="aparelho-entalhe" aria-hidden="true"></div>
+          <div class="palco" id="heroPalco" style="aspect-ratio:9/16">
+            <div class="palco-midia" id="heroMidia"></div>
+            <div class="camada camada-temp" id="heroTemp"></div>
+            <div class="camada camada-sombras" id="heroSombras"></div>
+            <div class="camada camada-realces" id="heroRealces"></div>
+          </div>
+        </div>
+        <div class="demo-chips" id="heroChips" role="group" aria-label="Trocar o ambiente da demonstração"></div>
+        <p class="demo-leitura mono" id="heroValores" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ desafio ============ -->
+  <section class="bloco" id="desafio" aria-labelledby="titulo-desafio">
+    <div class="envelope grade-dupla">
+      <div>
+        <h2 class="titulo-bloco" id="titulo-desafio">O desafio</h2>
+        <p class="texto-bloco">Os celulares atuais, incluindo os da marca Jovi, possuem diversos filtros nativos na câmera, porém:</p>
+        <ol class="lista-num">
+          <li>Muitos usuários não sabem qual filtro usar em cada ambiente;</li>
+          <li>O excesso de opções gera indecisão;</li>
+          <li>As fotos podem ficar com aparência artificial ou mal ajustadas;</li>
+          <li>Usuários não entendem termos técnicos como: Dramático quente, Vibrante…</li>
+        </ol>
+        <p class="resultado"><small>Resultado</small>Experiência confusa e pouco prática.</p>
+      </div>
+      <img class="figura-celular" src="assets/slides/desafio-celular.png" alt="Câmera de celular com uma fileira de filtros de nomes técnicos" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ============ solução ============ -->
+  <section class="bloco" id="solucao" aria-labelledby="titulo-solucao">
+    <div class="envelope">
+      <h2 class="titulo-bloco" id="titulo-solucao">Nossa solução</h2>
+      <p class="texto-bloco">Criamos um sistema de <strong>Botões de Adaptatividade Inteligente</strong>. Ao invés de escolher filtros técnicos, o usuário escolhe o ambiente em que está — 14 ambientes em quatro categorias. Cada um é um conjunto fechado de valores, calibrado por situação, com o peso de cada parâmetro declarado.</p>
+      <p class="texto-bloco"><strong>Objetivo:</strong> tornar a câmera mais intuitiva, rápida e inteligente.</p>
+      <div class="tabela-moldura">
+        <table class="tabela">
+          <caption>Amostra da tabela de configuração. A câmera tem os 14 ambientes.</caption>
+          <thead>
+            <tr><th scope="col">Ambiente</th><th scope="col">Exposição</th><th scope="col">Brilho</th><th scope="col">Contraste</th><th scope="col">Saturação</th><th scope="col">Temperatura</th><th scope="col">Sombras</th><th scope="col">Realces</th></tr>
+          </thead>
+          <tbody id="tabelaAmbientes"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ jornada ============ -->
+  <section class="bloco" id="jornada" aria-labelledby="titulo-jornada">
+    <div class="envelope">
+      <h2 class="titulo-bloco" id="titulo-jornada">Jornada do usuário</h2>
+      <ol class="jornada">
+        <li><span class="jornada-num">1</span><h3>O usuário abre a câmera.</h3><p>Sem grade de filtros: só o visor, o obturador e o ambiente atual.</p></li>
+        <li><span class="jornada-num">2</span><h3>Seleciona o ambiente atual.</h3><p>Ou aceita a sugestão da detecção, que mostra o grau de certeza.</p></li>
+        <li><span class="jornada-num">3</span><h3>Toca no ambiente — o efeito aplica na hora.</h3><p>Não existe botão de confirmar.</p></li>
+        <li><span class="jornada-num">4</span><h3>Ajusta se quiser; a câmera mostra o que mudou.</h3><p>Iluminação, brilho, contraste, temperatura e outros parâmetros, cada um com escala.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ ambientes ============ -->
+  <section class="bloco" id="ambientes" aria-labelledby="titulo-ambientes">
+    <div class="envelope">
+      <h2 class="titulo-bloco" id="titulo-ambientes">Cada ambiente, um resultado diferente</h2>
+      <p class="texto-bloco">Toque na foto para ver a mesma cena sem filtro.</p>
+      <div class="ambientes">
+        <article class="ambiente" data-amb="praia">
+          <div class="ambiente-cabeca">
+            <button type="button" class="ambiente-foto" aria-pressed="true" aria-label="Mostrar Praia e mar sem filtro">
+              <img src="assets/slides/foto-praia-original.png" alt="Cena Orla ao meio-dia sem filtro" loading="lazy">
+              <img class="foto-filtro" src="assets/slides/foto-praia.png" alt="A mesma cena com o preset Praia e mar" loading="lazy">
+              <span class="ambiente-foto-rotulo">com filtro</span>
+            </button>
+            <div>
+              <p class="ambiente-categoria">Ao ar livre</p>
+              <h3 class="ambiente-nome">Praia e mar</h3>
+              <p class="ambiente-resumo"></p>
+            </div>
+          </div>
+          <p class="ambiente-explicacao"></p>
+          <p class="ambiente-valores mono"></p>
+        </article>
+        <article class="ambiente" data-amb="cinema">
+          <div class="ambiente-cabeca">
+            <button type="button" class="ambiente-foto" aria-pressed="true" aria-label="Mostrar Cinema sem filtro">
+              <img src="assets/slides/foto-cinema-original.png" alt="Cena Rua à noite sem filtro" loading="lazy">
+              <img class="foto-filtro" src="assets/slides/foto-cinema.png" alt="A mesma cena com o preset Cinema" loading="lazy">
+              <span class="ambiente-foto-rotulo">com filtro</span>
+            </button>
+            <div>
+              <p class="ambiente-categoria">Ambiente fechado</p>
+              <h3 class="ambiente-nome">Cinema</h3>
+              <p class="ambiente-resumo"></p>
+            </div>
+          </div>
+          <p class="ambiente-explicacao"></p>
+          <p class="ambiente-valores mono"></p>
+        </article>
+        <article class="ambiente" data-amb="academia">
+          <div class="ambiente-cabeca">
+            <button type="button" class="ambiente-foto" aria-pressed="true" aria-label="Mostrar Academia sem filtro">
+              <img src="assets/slides/foto-academia-original.png" alt="Cena Café sem filtro" loading="lazy">
+              <img class="foto-filtro" src="assets/slides/foto-academia.png" alt="A mesma cena com o preset Academia" loading="lazy">
+              <span class="ambiente-foto-rotulo">com filtro</span>
+            </button>
+            <div>
+              <p class="ambiente-categoria">Ambiente fechado</p>
+              <h3 class="ambiente-nome">Academia</h3>
+              <p class="ambiente-resumo"></p>
+            </div>
+          </div>
+          <p class="ambiente-explicacao"></p>
+          <p class="ambiente-valores mono"></p>
+        </article>
+      </div>
+      <p class="nota">Imagens do protótipo com o preset de cada ambiente aplicado sobre as cenas de demonstração Orla ao meio-dia, Rua à noite e Café. Os valores são os quatro maiores ajustes, como no recibo da câmera.</p>
+    </div>
+  </section>
+
+  <!-- ============ recibo + comparador ============ -->
+  <section class="bloco" id="recibo" aria-labelledby="titulo-recibo">
+    <div class="envelope grade-dupla">
+      <div>
+        <h2 class="titulo-bloco" id="titulo-recibo">A câmera presta contas</h2>
+        <p class="texto-bloco">Depois de cada mudança, um recibo mostra o que foi aplicado, em números e em português. E o comparador põe a mesma cena lado a lado, sem e com filtro.</p>
+        <img class="recibo-imagem" src="assets/slides/recibo-praia.png" alt="Recibo: Praia e mar aplicado. Saturação +25, Contraste +20, Realces −15, Brilho −10" loading="lazy">
+      </div>
+      <div class="comparador aparelho">
+        <div class="aparelho-entalhe" aria-hidden="true"></div>
+        <div class="tela">
+          <img src="assets/slides/foto-praia.png" alt="Cena com o preset Praia e mar" loading="lazy">
+          <img class="original" src="assets/slides/foto-praia-original.png" alt="A mesma cena sem filtro" loading="lazy">
+          <span class="comparador-linha" aria-hidden="true"></span>
+          <span class="comparador-alca" aria-hidden="true">‹›</span>
+          <span class="comparador-rotulo esq">Sem filtro</span>
+          <span class="comparador-rotulo dir">Com filtro</span>
+          <input type="range" min="0" max="100" value="50" step="0.5" aria-label="Arraste para comparar sem filtro e com filtro">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ motor ============ -->
+  <section class="bloco" id="motor" aria-labelledby="titulo-motor">
+    <div class="envelope">
+      <h2 class="titulo-bloco" id="titulo-motor">Detecção que pode ser auditada</h2>
+      <p class="texto-bloco">Nada de caixa-preta. Cada ambiente tem uma assinatura de sensores, e a sugestão é a menor distância entre a leitura atual e essas assinaturas. Por isso o motor sempre consegue explicar a escolha em uma frase — e o usuário pode discordar dele.</p>
+      <dl class="sinais">
+        <div><dt>Luz ambiente</dt><dd>Separa externo, interno e noite. Pesa 38% na decisão, porque é o sinal mais estável.</dd></div>
+        <div><dt>Temperatura de cor</dt><dd>Distingue lâmpada quente de fluorescente fria e de luz natural. Pesa 22%.</dd></div>
+        <div><dt>Composição do quadro</dt><dd>Proporção de verde e de céu no terço superior. Separa parque de praia e de montanha.</dd></div>
+        <div><dt>Horário</dt><dd>Só entra como ajuste fino: às 18h, praia vira pôr do sol; ao meio-dia, não.</dd></div>
+      </dl>
+      <p class="nota">Quando o navegador libera a câmera, o protótipo amostra o quadro num canvas de 48 por 48 pixels e deriva as mesmas grandezas que o sensor do aparelho entregaria. Sem permissão, as cenas de demonstração carregam leituras equivalentes, e o motor roda exatamente igual.</p>
+    </div>
+  </section>
+
+  <!-- ============ técnico ============ -->
+  <section class="bloco" id="tecnico" aria-labelledby="titulo-tecnico">
+    <div class="envelope">
+      <h2 class="titulo-bloco" id="titulo-tecnico">Como está construído</h2>
+      <p class="texto-bloco">HTML5 semântico, CSS3 autoral, JavaScript ES6+, Tailwind CSS compilado e GSAP para as animações. Sem framework e sem build: as bibliotecas ficam dentro do projeto, que abre offline, direto do arquivo.</p>
+      <dl class="arquivos mono">
+        <div><dt>index.html</dt><dd>a solução</dd></div>
+        <div><dt>app.html</dt><dd>protótipo da câmera</dd></div>
+        <div><dt>slides.html</dt><dd>apresentação</dd></div>
+        <div><dt>js/dados.js</dt><dd>entidades do modelo de dados</dd></div>
+        <div><dt>js/motor.js</dt><dd>presets, filtros e detecção</dd></div>
+        <div><dt>js/app.js</dt><dd>interface da câmera</dd></div>
+      </dl>
+      <p class="nota">As entidades da modelagem aparecem no código com o mesmo nome: PARAMETRO_AJUSTE, AMBIENTE, CONFIGURACAO_AMBIENTE, PRESET_USUARIO e FOTO com seu metadado de captura.</p>
+    </div>
+  </section>
+
+  <!-- ============ chamada final ============ -->
+  <section class="chamada" aria-labelledby="titulo-chamada">
+    <div class="envelope">
+      <h2 class="titulo-bloco" id="titulo-chamada">Aponte para uma janela, para o teto ou para um canto escuro.</h2>
+      <p class="texto-bloco">Libere a câmera do seu aparelho e veja a detecção mudar de opinião junto com a luz.</p>
+      <div class="acoes">
+        <a href="app.html" class="botao-primario">Abrir a câmera</a>
+        <a href="slides.html" class="botao-contorno">Ver a apresentação</a>
+        <a href="slides.pdf" class="botao-contorno">Baixar o PDF</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="envelope">Projeto acadêmico desenvolvido para o Challenge JOVI da FIAP. Marca e produto usados apenas para fins didáticos.</div>
+</footer>
+
+<script src="js/dados.js"></script>
+<script src="js/cenas.js"></script>
+<script src="js/motor.js"></script>
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/vendor/SplitText.min.js"></script>
+<script src="js/hero.js"></script>
+<script src="js/site.js"></script>
+<script src="js/efeitos.js"></script>
+</body>
+</html>
