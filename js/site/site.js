@@ -31,6 +31,9 @@ document.querySelectorAll('.ambiente[data-amb]').forEach(el => {
     foto.setAttribute('aria-pressed', String(comFiltro));
     rotulo.textContent = comFiltro ? 'com filtro' : 'sem filtro';
     foto.setAttribute('aria-label', `Mostrar ${amb.nome} ${comFiltro ? 'sem' : 'com'} filtro`);
+    if (typeof gsap !== 'undefined') {
+      gsap.fromTo(rotulo, { scale: 0.82 }, { scale: 1, duration: 0.25, ease: 'back.out(2)' });
+    }
   });
 });
 
