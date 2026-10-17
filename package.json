@@ -1,10 +1,16 @@
 {
   "name": "jovi-smart-filter",
-  "version": "2.0.0",
-  "description": "Challenge JOVI - Sprint 2 - front-end da camera JOVI Smart Filter",
+  "version": "3.0.0",
+  "description": "Challenge JOVI — a câmera JOVI Smart Filter: protótipo, site da solução e apresentação",
   "private": true,
   "scripts": {
-    "css": "tailwindcss -c tailwind.config.js -i build/input.css -o css/tailwind.css --minify"
+    "serve": "python3 -m http.server 8000",
+    "css": "tailwindcss -c tailwind.config.js -i build/input.css -o css/tailwind.css --minify",
+    "pdf": "node tools/exportar-pdf.cjs",
+    "video": "node tools/gravar-video.cjs && swift tools/montar-video.swift tools/.tmp/quadros docs/slides-dinamico.mp4 45"
   },
-  "devDependencies": { "tailwindcss": "^3.4.17" }
+  "devDependencies": {
+    "playwright-core": "^1.49.0",
+    "tailwindcss": "^3.4.17"
+  }
 }

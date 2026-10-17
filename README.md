@@ -36,8 +36,10 @@ python -m http.server 8000      # depois abra http://localhost:8000
 | `index.html` | A solução: abertura com demonstração ao vivo, desafio, jornada, ambientes, recibo, comparador e detecção |
 | `app.html` | O protótipo da câmera |
 | `slides.html` | A apresentação (12 slides, 1920×1080) |
-| `slides.pdf` | A apresentação exportada, com links para o site e para a câmera |
-| `slides-dinamico.mp4` | Vídeo de 42 s da apresentação com todas as transições |
+| `docs/slides.pdf` | A apresentação exportada, com links para o site e para a câmera |
+| `docs/slides-dinamico.mp4` | Vídeo de 42 s da apresentação com todas as transições |
+
+As três páginas ficam na raiz de propósito: abrem com duplo clique e os links do PDF apontam para elas.
 
 ## Apresentação
 
@@ -48,7 +50,7 @@ python -m http.server 8000      # depois abra http://localhost:8000
   câmera, números que contam e comparador com varredura automática.
 
 Teclas: `→` / Espaço / clique avançam, `←` volta, `O` abre a visão geral, `F` liga a tela cheia.
-Para gerar o PDF, imprima a página no Chrome em tamanho 1920×1080 com fundos ligados.
+Para gerar o PDF e o vídeo, veja [Comandos](#comandos).
 
 ## Tecnologias
 
@@ -68,26 +70,48 @@ npm run css
 ## Estrutura
 
 ```
-index.html            a solução, com demonstração ao vivo no topo
-app.html              o protótipo da câmera
-slides.html           a apresentação
-css/style.css         CSS autoral: tokens, palco da câmera, folha, sliders, recibo e site
-css/slides.css        CSS da apresentação
-css/tailwind.css      utilitários compilados
-js/dados.js           entidades do modelo de dados
-js/motor.js           presets, tradução para filtros e motor de detecção
-js/cenas.js           cenas de demonstração em SVG
-js/app.js             controlador da interface da câmera
-js/app-fx.js          efeitos leves da câmera (GSAP)
-js/hero.js            demonstração ao vivo da abertura do site
-js/site.js            interações do site: ambientes, comparador e jornada
-js/efeitos.js         efeitos do site (GSAP, ScrollTrigger, SplitText)
-js/slides.js          motor da apresentação
-js/vendor/            GSAP, ScrollTrigger e SplitText (3.13.0)
-assets/slides/        retratos da equipe e capturas do protótipo
-tailwind.config.js    configuração do Tailwind
-build/input.css       entrada do compilador
+index.html  app.html  slides.html    as três páginas (raiz)
+css/
+  base.css          tokens, reset, tipografia, ícones e cabeçalho (todas as páginas)
+  camera.css        aparelho Jovi, palco, folha, ficha, sliders, galeria, recibo
+  site.css          componentes do index.html
+  slides.css        a apresentação
+  tailwind.css      utilitários compilados (gerado)
+js/
+  core/             dados.js, motor.js, cenas.js — modelo, motor e cenas, compartilhados
+  site/             hero.js, site.js, efeitos.js — o index.html
+  app/              app.js, app-fx.js — a câmera
+  slides/           slides.js — a apresentação
+  vendor/           GSAP, ScrollTrigger e SplitText (3.13.0)
+assets/img/
+  equipe/           retratos da equipe
+  ambientes/        cenas de demonstração, sem e com filtro
+  telas/            capturas do protótipo e imagens do aparelho Jovi
+docs/               slides.pdf, slides-dinamico.mp4 e referencias/
+tools/              exportar-pdf.cjs, gravar-video.cjs, montar-video.swift
+build/input.css     entrada do Tailwind
+tailwind.config.js  configuração do Tailwind
 ```
+
+### Como o código se organiza
+
+- `js/core/` não conhece nenhuma página: `dados.js` (entidades) → `motor.js` (presets e detecção) →
+  `cenas.js` (SVG). As três páginas reaproveitam esse núcleo.
+- Cada página carrega só o que usa: o `app.html` não recebe `css/site.css`, e só o `index.html` e
+  o `app.html` carregam o GSAP e os efeitos próprios.
+- O CSS vai em camadas, da mais geral para a mais específica: `base.css` → `camera.css` → `site.css`.
+
+## Comandos
+
+```
+npm run serve      servidor local em http://localhost:8000 (necessário para usar a câmera)
+npm run css        recompila o Tailwind
+npm run pdf        exporta docs/slides.pdf
+npm run video      grava e monta docs/slides-dinamico.mp4 (macOS)
+```
+
+`pdf` e `video` usam o Google Chrome instalado e o `playwright-core` (`npm install`). Os links do PDF
+saem com o caminho absoluto desta pasta no seu computador.
 
 ## O que dá para testar
 

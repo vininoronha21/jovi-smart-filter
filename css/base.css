@@ -1,0 +1,93 @@
+/* =============================================================
+   JOVI Smart Filter — base compartilhada (css/base.css)
+   Tokens, reset, tipografia, ícones e o cabeçalho usados por todas
+   as páginas. Depois dela: camera.css (aparelho e protótipo) e,
+   no index.html, site.css. O Tailwind cuida do espaçamento.
+   ============================================================= */
+
+:root {
+  --tinta-900: #0B0B0F;
+  --tinta-800: #15151C;
+  --tinta-700: #1E1E28;
+  --tinta-600: #2C2C3A;
+  --neve-100: #F5F5F7;
+  --neve-300: #C9C9D3;
+  --neve-400: #A6A6B3;
+  --neve-500: #8A8A98;
+  --violeta:  #9250F2;
+  --violeta-claro: #B48CFF;
+  --azul:     #4BA3FF;
+  --ambar:    #FFB25C;
+  --verde:    #3DDC97;
+
+  --raio-aparelho: 40px;
+  --sombra-flutuante: 0 18px 50px -12px rgba(2, 2, 5, .75);
+}
+
+* { box-sizing: border-box; }
+
+/* O atributo hidden precisa vencer as classes de componente abaixo,
+   que declaram display: flex/grid.                                */
+[hidden] { display: none !important; }
+
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--tinta-900);
+}
+
+.font-display { font-family: 'Sora', 'Inter', ui-sans-serif, system-ui, sans-serif; }
+.mono { font-family: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.pular-link {
+  position: absolute; left: 12px; top: -60px; z-index: 60;
+  background: var(--violeta); color: #fff; padding: .6rem 1rem;
+  border-radius: 10px; font-size: 13px; transition: top .18s;
+}
+.pular-link:focus { top: 12px; }
+
+:focus-visible {
+  outline: 2px solid var(--violeta-claro);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.icone { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.marca-ponto {
+  width: 20px; height: 20px; border-radius: 7px; display: inline-block;
+  border-radius: 50%;
+  background: radial-gradient(120% 95% at 22% 12%, #FF9CBA 0%, #9250F2 45%, #180B2E 90%);
+  box-shadow: inset 0 0 0 5px var(--tinta-900), 0 0 0 1.5px rgba(255, 255, 255, .25);
+}
+
+/* ---------- layout e cabeçalho (todas as páginas) ----------- */
+:root { --gutter: 20px; }
+.envelope { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
+
+.topo { position: sticky; top: 0; z-index: 40; background: rgba(11, 11, 15, .82); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.07); }
+.topo .envelope { display: flex; align-items: center; gap: 12px; min-height: 58px; }
+.marca { display: inline-flex; align-items: center; gap: 10px; color: var(--neve-100); text-decoration: none; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: -.01em; }
+.marca span { display: none; font-weight: 400; color: var(--neve-500); }
+@media (min-width: 480px) { .marca span { display: inline; } }
+.nav { margin-left: auto; display: flex; gap: 2px; }
+.nav a { padding: 8px 8px; border-radius: 10px; font-size: 13px; color: var(--neve-400); text-decoration: none; transition: color .15s, background .15s; }
+.nav a:hover { color: var(--neve-100); background: rgba(255,255,255,.06); }
+.nav a[aria-current="page"] { color: var(--neve-100); background: var(--tinta-700); }
+@media (min-width: 768px) {
+  :root { --gutter: 40px; }
+  .nav a { padding: 8px 14px; font-size: 13.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important; scroll-behavior: auto !important;
+  }
+}

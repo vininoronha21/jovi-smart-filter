@@ -1,6 +1,6 @@
 /** Configuração do Tailwind CSS — JOVI Smart Filter (direção visual "Visor", a mesma do deck) */
 module.exports = {
-  content: ['./*.html', './js/**/*.js'],
+  content: ['./*.html', './js/**/*.js', '!./js/vendor/**'],
   theme: {
     extend: {
       colors: {

@@ -1,0 +1,12 @@
+# dependências
+node_modules/
+
+# sistema e editor
+.DS_Store
+.vscode/
+.idea/
+
+# saídas temporárias de teste e de gravação
+.playwright-mcp/
+tools/.tmp/
+*.log

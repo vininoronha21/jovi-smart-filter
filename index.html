@@ -10,7 +10,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tailwind.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/camera.css">
+<link rel="stylesheet" href="css/site.css">
 <script>if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('gsap-hero');</script>
 </head>
 <body class="site bg-tinta-900 antialiased">
@@ -82,7 +84,7 @@
         </ol>
         <p class="resultado"><small>Resultado</small>Experiência confusa e pouco prática.</p>
       </div>
-      <img class="figura-celular" src="assets/slides/desafio-celular.png" alt="Câmera de celular com uma fileira de filtros de nomes técnicos" loading="lazy">
+      <img class="figura-celular" src="assets/img/telas/desafio-celular.png" alt="Câmera de celular com uma fileira de filtros de nomes técnicos" loading="lazy">
     </div>
   </section>
 
@@ -126,8 +128,8 @@
         <article class="ambiente" data-amb="praia">
           <div class="ambiente-cabeca">
             <button type="button" class="ambiente-foto" aria-pressed="true" aria-label="Mostrar Praia e mar sem filtro">
-              <img src="assets/slides/foto-praia-original.png" alt="Cena Orla ao meio-dia sem filtro" loading="lazy">
-              <img class="foto-filtro" src="assets/slides/foto-praia.png" alt="A mesma cena com o preset Praia e mar" loading="lazy">
+              <img src="assets/img/ambientes/foto-praia-original.png" alt="Cena Orla ao meio-dia sem filtro" loading="lazy">
+              <img class="foto-filtro" src="assets/img/ambientes/foto-praia.png" alt="A mesma cena com o preset Praia e mar" loading="lazy">
               <span class="ambiente-foto-rotulo">com filtro</span>
             </button>
             <div>
@@ -142,8 +144,8 @@
         <article class="ambiente" data-amb="cinema">
           <div class="ambiente-cabeca">
             <button type="button" class="ambiente-foto" aria-pressed="true" aria-label="Mostrar Cinema sem filtro">
-              <img src="assets/slides/foto-cinema-original.png" alt="Cena Rua à noite sem filtro" loading="lazy">
-              <img class="foto-filtro" src="assets/slides/foto-cinema.png" alt="A mesma cena com o preset Cinema" loading="lazy">
+              <img src="assets/img/ambientes/foto-cinema-original.png" alt="Cena Rua à noite sem filtro" loading="lazy">
+              <img class="foto-filtro" src="assets/img/ambientes/foto-cinema.png" alt="A mesma cena com o preset Cinema" loading="lazy">
               <span class="ambiente-foto-rotulo">com filtro</span>
             </button>
             <div>
@@ -158,8 +160,8 @@
         <article class="ambiente" data-amb="academia">
           <div class="ambiente-cabeca">
             <button type="button" class="ambiente-foto" aria-pressed="true" aria-label="Mostrar Academia sem filtro">
-              <img src="assets/slides/foto-academia-original.png" alt="Cena Café sem filtro" loading="lazy">
-              <img class="foto-filtro" src="assets/slides/foto-academia.png" alt="A mesma cena com o preset Academia" loading="lazy">
+              <img src="assets/img/ambientes/foto-academia-original.png" alt="Cena Café sem filtro" loading="lazy">
+              <img class="foto-filtro" src="assets/img/ambientes/foto-academia.png" alt="A mesma cena com o preset Academia" loading="lazy">
               <span class="ambiente-foto-rotulo">com filtro</span>
             </button>
             <div>
@@ -182,13 +184,13 @@
       <div>
         <h2 class="titulo-bloco" id="titulo-recibo">A câmera presta contas</h2>
         <p class="texto-bloco">Depois de cada mudança, um recibo mostra o que foi aplicado, em números e em português. E o comparador põe a mesma cena lado a lado, sem e com filtro.</p>
-        <img class="recibo-imagem" src="assets/slides/recibo-praia.png" alt="Recibo: Praia e mar aplicado. Saturação +25, Contraste +20, Realces −15, Brilho −10" loading="lazy">
+        <img class="recibo-imagem" src="assets/img/telas/recibo-praia.png" alt="Recibo: Praia e mar aplicado. Saturação +25, Contraste +20, Realces −15, Brilho −10" loading="lazy">
       </div>
       <div class="comparador aparelho">
         <div class="aparelho-entalhe" aria-hidden="true"></div>
         <div class="tela">
-          <img src="assets/slides/foto-praia.png" alt="Cena com o preset Praia e mar" loading="lazy">
-          <img class="original" src="assets/slides/foto-praia-original.png" alt="A mesma cena sem filtro" loading="lazy">
+          <img src="assets/img/ambientes/foto-praia.png" alt="Cena com o preset Praia e mar" loading="lazy">
+          <img class="original" src="assets/img/ambientes/foto-praia-original.png" alt="A mesma cena sem filtro" loading="lazy">
           <span class="comparador-linha" aria-hidden="true"></span>
           <span class="comparador-alca" aria-hidden="true">‹›</span>
           <span class="comparador-rotulo esq">Sem filtro</span>
@@ -223,9 +225,9 @@
         <div><dt>index.html</dt><dd>a solução</dd></div>
         <div><dt>app.html</dt><dd>protótipo da câmera</dd></div>
         <div><dt>slides.html</dt><dd>apresentação</dd></div>
-        <div><dt>js/dados.js</dt><dd>entidades do modelo de dados</dd></div>
-        <div><dt>js/motor.js</dt><dd>presets, filtros e detecção</dd></div>
-        <div><dt>js/app.js</dt><dd>interface da câmera</dd></div>
+        <div><dt>js/core/dados.js</dt><dd>entidades do modelo de dados</dd></div>
+        <div><dt>js/core/motor.js</dt><dd>presets, filtros e detecção</dd></div>
+        <div><dt>js/app/app.js</dt><dd>interface da câmera</dd></div>
       </dl>
       <p class="nota">As entidades da modelagem aparecem no código com o mesmo nome: PARAMETRO_AJUSTE, AMBIENTE, CONFIGURACAO_AMBIENTE, PRESET_USUARIO e FOTO com seu metadado de captura.</p>
     </div>
@@ -239,7 +241,7 @@
       <div class="acoes">
         <a href="app.html" class="botao-primario">Abrir a câmera</a>
         <a href="slides.html" class="botao-contorno">Ver a apresentação</a>
-        <a href="slides.pdf" class="botao-contorno">Baixar o PDF</a>
+        <a href="docs/slides.pdf" class="botao-contorno">Baixar o PDF</a>
       </div>
     </div>
   </section>
@@ -249,14 +251,14 @@
   <div class="envelope">Projeto acadêmico desenvolvido para o Challenge JOVI da FIAP. Marca e produto usados apenas para fins didáticos.</div>
 </footer>
 
-<script src="js/dados.js"></script>
-<script src="js/cenas.js"></script>
-<script src="js/motor.js"></script>
+<script src="js/core/dados.js"></script>
+<script src="js/core/cenas.js"></script>
+<script src="js/core/motor.js"></script>
 <script src="js/vendor/gsap.min.js"></script>
 <script src="js/vendor/ScrollTrigger.min.js"></script>
 <script src="js/vendor/SplitText.min.js"></script>
-<script src="js/hero.js"></script>
-<script src="js/site.js"></script>
-<script src="js/efeitos.js"></script>
+<script src="js/site/hero.js"></script>
+<script src="js/site/site.js"></script>
+<script src="js/site/efeitos.js"></script>
 </body>
 </html>
