@@ -23,6 +23,7 @@
 }
 
 .palco {
+  container-type: inline-size;
   position: relative;
   isolation: isolate;                 /* prende as camadas de mistura */
   aspect-ratio: 9 / 19.5;
@@ -382,4 +383,20 @@ input[type="range"]::-moz-range-thumb {
   .folha-grade { grid-template-columns: repeat(3, 1fr); }
   .recibo { left: 12px; right: 12px; transform: none; max-width: none; }
   @keyframes entrar-recibo { from { opacity: 0; transform: translateY(14px); } }
+}
+
+/* o aparelho nunca passa da altura visível: no celular, câmera inteira sem rolar */
+.coluna-aparelho {
+  max-width: 340px;
+  max-width: max(240px, min(340px, calc((100svh - 140px) * 9 / 19.5 + 20px)));
+}
+
+/* palco estreito (celular baixo): a barra do topo e o cartão de sugestão se reorganizam */
+.pilula-auto { white-space: nowrap; }
+@container (max-width: 270px) {
+  .pilula-auto { font-size: 10.5px; padding: 5px 9px; }
+  .sugestao { flex-wrap: wrap; gap: 8px; }
+  .sugestao-icone { display: none; }
+  .sugestao > .min-w-0 { flex: 1 1 100%; }
+  .sugestao-aceitar { flex: 1; }
 }

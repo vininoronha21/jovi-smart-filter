@@ -332,6 +332,38 @@ a.demo-celular:hover .jovi { box-shadow: 0 0 0 calc(var(--w) * .011) #6C5BD0, 0 
 /* paralaxe leve dos celulares (capa e encerramento) */
 [data-paralaxe] > img { translate: var(--px, 0) var(--py, 0); transition: translate .6s var(--suave); }
 
+/* ---------- celular: dica de toque, tela cheia e aviso para girar ---------- */
+.so-toque { display: none; }
+@media (pointer: coarse) { .so-teclado { display: none; } .so-toque { display: inline; } }
+
+.deck-tela-cheia {
+  position: fixed; left: 12px; bottom: 10px; z-index: 30; width: 44px; height: 44px; padding: 0;
+  display: none; place-items: center; border: 0; border-radius: 50%; cursor: pointer;
+  color: var(--texto); background: rgba(21, 21, 28, .82); box-shadow: inset 0 0 0 1px var(--linha);
+}
+@media (pointer: coarse) { .deck-tela-cheia:not([hidden]) { display: grid; } }
+
+.gire { display: none; }
+@media (orientation: portrait) and (max-width: 820px) {
+  .gire {
+    position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 14px; padding: 32px 28px; text-align: center; background: var(--fundo);
+  }
+  .deck, .deck-progresso, .deck-ajuda, .deck-tela-cheia { visibility: hidden; }
+}
+.gire-icone { color: var(--violeta-claro); margin-bottom: 8px; transform-origin: 50% 50%; }
+.gire-titulo { margin: 0; font-family: var(--display); font-weight: 800; font-size: 34px; letter-spacing: -.03em; }
+.gire-texto { margin: 0 0 10px; max-width: 30ch; font-size: 17px; line-height: 1.5; color: var(--texto-2); }
+.gire-link {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 50px; min-width: 220px; padding: 0 24px;
+  border-radius: 14px; font-family: var(--display); font-weight: 600; font-size: 16px; color: #fff; text-decoration: none; background: var(--violeta);
+}
+.gire-link--contorno { background: transparent; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .3); }
+@media (prefers-reduced-motion: no-preference) {
+  .gire-icone { animation: girar 2.6s var(--suave) infinite; }
+}
+@keyframes girar { 0%, 25% { transform: rotate(0); } 55%, 100% { transform: rotate(-90deg); } }
+
 /* ---------- foco, movimento reduzido e impressão ------------ */
 .slide :focus-visible { outline: 3px solid var(--violeta-claro); outline-offset: 4px; }
 
@@ -359,5 +391,5 @@ a.demo-celular:hover .jovi { box-shadow: 0 0 0 calc(var(--w) * .011) #6C5BD0, 0 
   .status-agora { opacity: 1; translate: none; }
   /* sombra desfocada vira bloco opaco no PDF do Chromium: só os aros ficam */
   .jovi { box-shadow: 0 0 0 calc(var(--w) * .011) #2B3B68, 0 0 0 calc(var(--w) * .017) #121A30; }
-  .deck-progresso, .deck-ajuda { display: none; }
+  .deck-progresso, .deck-ajuda, .deck-tela-cheia, .gire { display: none; }
 }

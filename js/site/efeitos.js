@@ -117,23 +117,40 @@ mm.add({ ok: '(prefers-reduced-motion: no-preference)', largo: '(min-width: 768p
     scrollTrigger: { trigger: '.chamada', start: 'top 80%', once: true }
   });
 
-  /* ---------- paralaxe leve dos celulares (só em telas largas) ---------- */
-  if (conditions.largo) {
-    gsap.utils.toArray('.figura-celular, .comparador').forEach(el => {
-      gsap.fromTo(el, { y: 40 }, {
-        y: -40, ease: 'none',
+  /* ---------- paralaxe leve dos celulares (menor no celular) ---------- */
+  const amplitude = conditions.largo ? 40 : 14;
+  gsap.utils.toArray('.figura-celular, .comparador').forEach(el => {
+    gsap.fromTo(el, { y: amplitude }, {
+      y: -amplitude, ease: 'none',
+      scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true }
+    });
+  });
+  if (!conditions.largo) {
+    gsap.utils.toArray('.ambiente-foto').forEach(el => {
+      gsap.fromTo(el, { y: 10 }, {
+        y: -10, ease: 'none',
         scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true }
       });
     });
   }
 
-  /* ---------- paralaxe suave no mobile (sutil, sem exagero) ---------- */
-  if (!conditions.largo) {
-    gsap.utils.toArray('.ambiente-foto').forEach(el => {
-      gsap.fromTo(el, { y: 12 }, {
-        y: -12, ease: 'none',
-        scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true }
-      });
+  /* ---------- comparador: se demonstra uma vez, para o toque saber que arrasta ---------- */
+  const comparador = document.querySelector('.comparador');
+  if (comparador) {
+    const controle = comparador.querySelector('input[type="range"]');
+    const posicao = { v: 50 };
+    let demo = null;
+    const aplicar = () => { controle.value = posicao.v; comparador.style.setProperty('--pos', posicao.v + '%'); };
+    const parar = () => { if (demo) { demo.kill(); demo = null; } };
+    ['pointerdown', 'input', 'keydown'].forEach(ev => controle.addEventListener(ev, parar));
+    ScrollTrigger.create({
+      trigger: comparador, start: 'top 70%', once: true,
+      onEnter: () => {
+        demo = gsap.timeline({ defaults: { ease: 'power2.inOut', onUpdate: aplicar } })
+          .to(posicao, { v: 84, duration: 0.9, delay: 0.5 })
+          .to(posicao, { v: 16, duration: 1.4 })
+          .to(posicao, { v: 50, duration: 0.9 });
+      }
     });
   }
 

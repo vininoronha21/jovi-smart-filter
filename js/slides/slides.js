@@ -229,7 +229,7 @@ addEventListener('keydown', e => {
   else if (k === 'End') { e.preventDefault(); ir(slides.length - 1, { passoFinal: true }); }
 });
 
-const interativo = el => el.closest('a, button, input, label, .amb-foto');
+const interativo = el => el.closest('a, button, input, label, .amb-foto, .gire');
 let toqueX = null, arrastou = false;
 
 addEventListener('pointerdown', e => { toqueX = interativo(e.target) ? null : e.clientX; arrastou = false; });
@@ -259,6 +259,15 @@ if (!estatico) {
       el.style.setProperty('--px', `${-nx * f}px`);
       el.style.setProperty('--py', `${-ny * f}px`);
     });
+  });
+}
+
+/* tela cheia por botão no toque (o teclado F continua valendo no computador) */
+const botaoTelaCheia = document.querySelector('.deck-tela-cheia');
+if (botaoTelaCheia && document.documentElement.requestFullscreen) {
+  botaoTelaCheia.hidden = false;
+  botaoTelaCheia.addEventListener('click', () => {
+    document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
   });
 }
 

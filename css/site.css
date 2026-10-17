@@ -46,14 +46,25 @@
   font-size: clamp(46px, 14vw, 176px);
   line-height: .90;
   letter-spacing: -.05em;
-  background: linear-gradient(180deg, #fff 0%, #fff 44%, #8D88A8 96%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #fff;
   padding-bottom: .06em;
   word-break: break-word;
 }
-.titulo-abertura span { display: block; }
+.titulo-abertura span { display: block; color: #fff; }
+/* o degradê vive em cada linha (e não no h1): o GSAP anima as linhas, e no Safari/iOS
+   texto recortado por um pai some quando o filho recebe transform ou opacity. */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .titulo-abertura span {
+    background: linear-gradient(180deg, #fff 0%, #fff 44%, #8D88A8 96%);
+    background-size: 100% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .titulo-abertura span:nth-child(1) { background-position: 0 0; }
+  .titulo-abertura span:nth-child(2) { background-position: 0 50%; }
+  .titulo-abertura span:nth-child(3) { background-position: 0 100%; }
+}
 
 .abertura-sub {
   margin: 18px 0 0;
@@ -442,19 +453,20 @@
 }
 .ambiente-cabeca {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 128px 1fr;
   gap: 16px;
+  align-items: end;
 }
 .ambiente-foto {
   position: relative;
   display: block;
-  width: 100%;
-  height: 220px;
+  width: 128px;
+  height: 236px;
   padding: 0;
   border: 0;
   cursor: pointer;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 14px 14px 14px 40px;
   background: var(--tinta-900);
   touch-action: manipulation;
 }
@@ -464,6 +476,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 70%;
   transition: opacity .45s ease;
 }
 .ambiente-foto[aria-pressed="false"] .foto-filtro { opacity: 0; }
@@ -534,6 +547,7 @@
   --pos: 50%;
   position: relative;
   width: min(290px, 80vw);
+  width: min(290px, 80vw, calc((100svh - 160px) * 9 / 19.5 + 20px));
   justify-self: center;
   margin: 0 auto;
 }
