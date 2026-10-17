@@ -106,12 +106,13 @@ tailwind.config.js  configuração do Tailwind
 ```
 npm run serve      servidor local em http://localhost:8000 (necessário para usar a câmera)
 npm run css        recompila o Tailwind
-npm run pdf        exporta docs/slides.pdf
+npm run pdf            exporta docs/slides.pdf, com links para os arquivos desta pasta
+npm run pdf:publicado  o mesmo, com links para o site publicado na Vercel
 npm run video      grava e monta docs/slides-dinamico.mp4 (macOS)
 ```
 
-`pdf` e `video` usam o Google Chrome instalado e o `playwright-core` (`npm install`). Os links do PDF
-saem com o caminho absoluto desta pasta no seu computador.
+`pdf` e `video` usam o Google Chrome instalado e o `playwright-core` (`npm install`). O `docs/slides.pdf` versionado é o publicado
+(`pdf:publicado`); para um PDF que abra os arquivos locais, rode `npm run pdf`.
 
 ## O que dá para testar
 

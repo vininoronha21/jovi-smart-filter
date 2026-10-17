@@ -10,3 +10,4 @@ node_modules/
 .playwright-mcp/
 tools/.tmp/
 *.log
+.vercel

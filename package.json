@@ -7,6 +7,7 @@
     "serve": "python3 -m http.server 8000",
     "css": "tailwindcss -c tailwind.config.js -i build/input.css -o css/tailwind.css --minify",
     "pdf": "node tools/exportar-pdf.cjs",
+    "pdf:publicado": "node tools/exportar-pdf.cjs https://jovi-smart-filter.vercel.app",
     "video": "node tools/gravar-video.cjs && swift tools/montar-video.swift tools/.tmp/quadros docs/slides-dinamico.mp4 45"
   },
   "devDependencies": {
