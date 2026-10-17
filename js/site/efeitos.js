@@ -68,7 +68,7 @@ mm.add({ ok: '(prefers-reduced-motion: no-preference)', largo: '(min-width: 768p
   });
 
   /* ---------- blocos que entram na rolagem ---------- */
-  const itens = gsap.utils.toArray('.lista-num li, .resultado, .tabela-moldura, .recibo-imagem, .sinais > div, .ambiente, .arquivos div');
+  const itens = gsap.utils.toArray('.lista-num li, .resultado, .tabela-moldura, .recibo-imagem, .sinais > div, .ambiente');
   gsap.set(itens, { y: 32, opacity: 0 });
   ScrollTrigger.batch(itens, {
     start: 'top 88%', once: true,

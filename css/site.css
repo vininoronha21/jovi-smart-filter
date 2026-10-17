@@ -685,21 +685,6 @@
   color: var(--neve-400);
 }
 
-.arquivos {
-  margin: 22px 0 0;
-  display: grid;
-  gap: 4px;
-  font-size: 13px;
-  line-height: 1.6;
-}
-.arquivos div {
-  display: grid;
-  grid-template-columns: minmax(110px, 150px) 1fr;
-  gap: 10px;
-}
-.arquivos dt { color: var(--neve-100); word-break: break-all; }
-.arquivos dd { margin: 0; color: var(--neve-500); }
-
 .chamada {
   padding: 60px 0 72px;
   border-top: 1px solid rgba(255,255,255,.07);
