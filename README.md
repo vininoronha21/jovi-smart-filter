@@ -1,146 +1,123 @@
-# JOVI Smart Filter: Challenge JOVI
+# JOVI Smart Filter
 
-Front-end da câmera que troca o vocabulário técnico dos filtros pelo ambiente real do usuário.
+**Uma câmera que simplifica a escolha de filtros ao adaptar a imagem ao ambiente.**
 
-**Turma 1TDSOE**
+[**Acessar o projeto publicado**](https://jovi-smart-filter.vercel.app) · [Abrir a câmera](https://jovi-smart-filter.vercel.app/app.html) · [Ver apresentação](https://jovi-smart-filter.vercel.app/slides.html)
 
-| Integrante | RM |
+## Problema
+
+Câmeras de smartphones oferecem muitos filtros, mas escolher o efeito adequado nem sempre é simples. Nomes técnicos, excesso de opções e ajustes pouco intuitivos tornam a experiência mais demorada e podem gerar resultados artificiais.
+
+## Solução
+
+O JOVI Smart Filter substitui a busca por filtros por uma escolha mais natural: **o usuário seleciona o ambiente em que está**. A câmera aplica uma configuração preparada para aquela situação e explica, em linguagem simples, o que foi alterado.
+
+O protótipo reúne **14 ambientes**, organizados em quatro categorias, e **7 parâmetros de imagem** configuráveis.
+
+## Demonstração
+
+A aplicação está publicada na Vercel: [jovi-smart-filter.vercel.app](https://jovi-smart-filter.vercel.app).
+
+### Seleção de ambiente
+
+O usuário escolhe o ambiente em uma interface organizada por categorias, sem precisar conhecer termos técnicos de fotografia.
+
+![Seleção de ambientes no JOVI Smart Filter](https://jovi-smart-filter.vercel.app/assets/img/telas/palco-folha.png)
+
+### Sugestão inteligente
+
+O sistema analisa sinais do ambiente e recomenda uma opção com grau de confiança e justificativa. A sugestão pode ser aceita ou ignorada.
+
+![Sugestão de ambiente na câmera](https://jovi-smart-filter.vercel.app/assets/img/telas/palco-sugestao.png)
+
+### Resultado e transparência
+
+Após aplicar o preset, a câmera apresenta um recibo com os ajustes realizados. O comparador permite observar a mesma cena antes e depois do filtro.
+
+![Recibo de ajustes aplicados](https://jovi-smart-filter.vercel.app/assets/img/telas/recibo-praia.png)
+
+## Funcionalidades
+
+- **14 ambientes:** presets organizados em quatro categorias, com configurações específicas para cada situação.
+- **Detecção automática:** recomenda ambientes com base em luminosidade, temperatura de cor, composição da imagem e horário.
+- **Aplicação em um toque:** selecionou o ambiente, o filtro é aplicado imediatamente, sem etapa extra de confirmação.
+- **Ajustes manuais:** controle de exposição, brilho, contraste, saturação, temperatura, sombras e realces, com escalas e unidades definidas.
+- **Preferências pessoais:** permite salvar uma configuração própria como padrão para cada ambiente.
+- **Recibo de alterações:** informa quais parâmetros foram modificados e seus respectivos valores.
+- **Comparador visual:** permite comparar a imagem original com a imagem tratada.
+- **Galeria de capturas:** mantém as imagens e seus metadados, incluindo ambiente e configurações aplicadas.
+
+## Como funciona a detecção
+
+O motor utiliza regras e pontuações para comparar as leituras disponíveis com as características esperadas de cada ambiente. Entre os sinais considerados estão:
+
+| Sinal | Uso |
 |---|---|
-| Guilherme Aparecido Bulhoes Cirilo | RM569679 |
-| Mateus Gonçalves Melo | RM573966 |
-| Geovanna Luna Mendes Ramos | RM571210 |
-| Vinicius Noronha Forte | RM569076 |
+| Luz ambiente | Diferencia condições externas, internas e noturnas. |
+| Temperatura de cor | Ajuda a identificar iluminação quente, fria ou natural. |
+| Composição do quadro | Usa características visuais, como presença de céu e áreas verdes. |
+| Horário | Atua como critério complementar para refinar a sugestão. |
 
----
+A detecção é explicável: a interface apresenta o motivo da recomendação e mantém a decisão final com o usuário.
 
-## Como executar
-
-Abra `index.html` no navegador. Não há servidor, instalação ou dependência online: o
-Tailwind já está compilado em `css/tailwind.css`, o GSAP está em `js/vendor/` e as cenas de
-demonstração são desenhadas em SVG dentro do próprio JavaScript. Só as fontes (Sora e Inter) vêm
-do Google Fonts; sem internet, o navegador usa as fontes do sistema.
-
-Um detalhe do navegador: o acesso à câmera (`getUserMedia`) só é liberado em `https` ou em
-`localhost`. Abrindo o arquivo direto do disco, o botão **Usar minha câmera** não funciona e o
-protótipo segue com as cenas de demonstração, que carregam leituras de sensor equivalentes.
-Para testar com a câmera de verdade, sirva a pasta em localhost:
-
-```
-python -m http.server 8000      # depois abra http://localhost:8000
-```
-
-## Páginas
-
-| Arquivo | O que é |
-|---|---|
-| `index.html` | A solução: abertura com demonstração ao vivo, desafio, jornada, ambientes, recibo, comparador e detecção |
-| `app.html` | O protótipo da câmera |
-| `slides.html` | A apresentação (12 slides, 1920×1080) |
-| `docs/slides.pdf` | A apresentação exportada, com links para o site e para a câmera |
-| `docs/slides-dinamico.mp4` | Vídeo de 42 s da apresentação com todas as transições |
-
-As três páginas ficam na raiz de propósito: abrem com duplo clique e os links do PDF apontam para elas.
-
-## Apresentação
-
-`slides.html` tem dois modos:
-
-- **Direto** (padrão, para apresentar): cada slide aparece completo, só com um fade curto.
-- **Dinâmico** (`slides.html?modo=dinamico`): transições, itens que entram um por clique, íris de
-  câmera, números que contam e comparador com varredura automática.
-
-Teclas: `→` / Espaço / clique avançam, `←` volta, `O` abre a visão geral, `F` liga a tela cheia.
-Para gerar o PDF e o vídeo, veja [Comandos](#comandos).
+> **Nota sobre a câmera:** o acesso ao dispositivo depende da permissão do navegador e de um contexto seguro (HTTPS ou localhost). Quando a câmera não está disponível, o protótipo utiliza cenas e leituras simuladas para demonstrar o mesmo fluxo de detecção e aplicação dos filtros.
 
 ## Tecnologias
 
-HTML5, CSS3, JavaScript (ES6+), Tailwind CSS e GSAP 3.13 (com ScrollTrigger e SplitText).
-Nenhum framework e nenhum build para rodar. O GSAP fica em `js/vendor/`, com versão fixa, para o
-projeto continuar abrindo offline. Todas as animações respeitam a preferência de movimento
-reduzido do sistema.
+- **Frontend:** HTML5, CSS3 e JavaScript (ES6+).
+- **Estilização:** Tailwind CSS.
+- **Animações:** GSAP 3.13, ScrollTrigger e SplitText.
+- **Publicação:** Vercel.
 
-O Tailwind foi compilado localmente para o pacote não depender de CDN. Para recompilar depois
-de alterar classes no HTML ou no JS:
+O projeto não utiliza framework frontend nem exige etapa de build para execução. O CSS do Tailwind já está compilado e as bibliotecas GSAP são mantidas localmente.
 
+## Executar localmente
+
+Requisitos: Python 3 e, para recompilar o CSS ou gerar os materiais de apresentação, Node.js.
+
+```bash
+git clone https://github.com/vininoronha21/jovi-smart-filter.git
+cd jovi-smart-filter
+python3 -m http.server 8000
 ```
+
+Acesse [http://localhost:8000](http://localhost:8000).
+
+Para iniciar pelo script do projeto:
+
+```bash
+npm run serve
+```
+
+A câmera exige HTTPS ou localhost. Ao abrir o arquivo diretamente pelo sistema de arquivos, o navegador pode bloquear o acesso à câmera.
+
+### Outros comandos
+
+```bash
 npm install
-npm run css
+npm run css        # recompila o CSS do Tailwind
+npm run pdf        # gera a apresentação em PDF
+npm run video      # gera o vídeo da apresentação (macOS)
 ```
 
-## Estrutura
+## Estrutura do projeto
 
-```
-index.html  app.html  slides.html    as três páginas (raiz)
-css/
-  base.css          tokens, reset, tipografia, ícones e cabeçalho (todas as páginas)
-  camera.css        aparelho Jovi, palco, folha, ficha, sliders, galeria, recibo
-  site.css          componentes do index.html
-  slides.css        a apresentação
-  tailwind.css      utilitários compilados (gerado)
-js/
-  core/             dados.js, motor.js, cenas.js: modelo, motor e cenas compartilhados
-  site/             hero.js, site.js, efeitos.js: páginas e scripts da solução
-  app/              app.js, app-fx.js: protótipo da câmera
-  slides/           slides.js: apresentação de slides
-  vendor/           GSAP, ScrollTrigger e SplitText (3.13.0)
-assets/img/
-  equipe/           retratos da equipe
-  ambientes/        cenas de demonstração, sem e com filtro
-  telas/            capturas do protótipo e imagens do aparelho Jovi
-docs/               slides.pdf, slides-dinamico.mp4 e referencias/
-tools/              exportar-pdf.cjs, gravar-video.cjs, montar-video.swift
-build/input.css     entrada do Tailwind
-tailwind.config.js  configuração do Tailwind
+```text
+.
+├── index.html          # Página da solução
+├── app.html            # Protótipo interativo da câmera
+├── slides.html         # Apresentação do projeto
+├── assets/             # Imagens, cenas e capturas da interface
+├── css/                # Estilos da aplicação
+├── js/
+│   ├── core/           # Dados, motor de detecção e cenas
+│   ├── app/            # Comportamento do protótipo
+│   ├── site/           # Scripts da página principal
+│   ├── slides/         # Lógica da apresentação
+│   └── vendor/         # Bibliotecas GSAP
+└── docs/               # Materiais complementares
 ```
 
-### Como o código se organiza
+## Contexto
 
-- `js/core/` não conhece nenhuma página: `dados.js` (entidades) → `motor.js` (presets e detecção) →
-  `cenas.js` (SVG). As três páginas reaproveitam esse núcleo.
-- Cada página carrega só o que usa: o `app.html` não recebe `css/site.css`, e só o `index.html` e
-  o `app.html` carregam o GSAP e os efeitos próprios.
-- O CSS vai em camadas, da mais geral para a mais específica: `base.css` → `camera.css` → `site.css`.
-
-## Comandos
-
-```
-npm run serve      servidor local em http://localhost:8000 (necessário para usar a câmera)
-npm run css        recompila o Tailwind
-npm run pdf            exporta docs/slides.pdf, com links para os arquivos desta pasta
-npm run pdf:publicado  o mesmo, com links para o site publicado na Vercel
-npm run video      grava e monta docs/slides-dinamico.mp4 (macOS)
-```
-
-`pdf` e `video` usam o Google Chrome instalado e o `playwright-core` (`npm install`). O `docs/slides.pdf` versionado é o publicado
-(`pdf:publicado`); para um PDF que abra os arquivos locais, rode `npm run pdf`.
-
-## O que dá para testar
-
-- **Um toque troca o ambiente.** A folha abre sobre o visor, o efeito acontece no toque e ela se
-  fecha sozinha. Não existe botão de confirmar.
-- **A detecção sugere, não impõe.** O cartão traz o grau de certeza e o motivo em uma frase. Ignorar
-  é gratuito: ele some sozinho. Recusar faz aquele ambiente parar de aparecer.
-- **O recibo.** Depois de cada mudança, a câmera diz o que fez, em números e em português.
-- **Ajuste fino.** Sete parâmetros com faixa e unidade declaradas, ordenados pelo peso que têm
-  naquele ambiente.
-- **Salvar como meu padrão.** Cria uma camada de preferência sobre o preset de fábrica, por ambiente.
-- **Comparador.** Arraste o divisor para ver a mesma cena com e sem filtro.
-- **Galeria.** Cada captura guarda o ambiente, os valores aplicados e se veio de uma sugestão aceita.
-- **Leitura dos sensores.** Painel com as grandezas que alimentam a detecção e o ranking dos três
-  ambientes mais prováveis.
-
-## Decisões de projeto
-
-- Trocar de ambiente leva um toque, sem tela de confirmação.
-- Os sete parâmetros têm faixa e unidade; a exposição é em EV.
-- `peso_importancia` ordena o painel de ajuste e marca o que é crítico em cada ambiente.
-- A preferência do usuário é uma tabela de sobrescrita por ambiente, fácil de consultar e de reverter.
-- Os ícones são um conjunto SVG, no lugar de emoji, que muda de plataforma para plataforma.
-- A taxonomia tem 14 ambientes em quatro categorias, iguais em todas as páginas.
-- A detecção é um motor de regras sobre os sensores existentes, e explica cada sugestão em uma frase.
-
-## Modelo de dados
-
-As entidades modeladas aparecem no código com o mesmo nome: `PARAMETRO_AJUSTE`, `AMBIENTE`,
-`CONFIGURACAO_AMBIENTE` (valor ideal e peso de importância), `PRESET_USUARIO` e `FOTO` com seu
-metadado de captura.
+Projeto acadêmico desenvolvido para o **Challenge JOVI — FIAP**. A marca e o produto são utilizados exclusivamente para fins educacionais.
