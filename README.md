@@ -2,7 +2,7 @@
 
 **Uma câmera que simplifica a escolha de filtros ao adaptar a imagem ao ambiente.**
 
-[**Acessar o projeto publicado**](https://jovi-smart-filter.vercel.app) · [Abrir a câmera](https://jovi-smart-filter.vercel.app/app.html) · [Ver apresentação](https://jovi-smart-filter.vercel.app/slides.html)
+[**Acessar o projeto publicado**](https://jovi-smart-filter.vercel.app) · [Abrir a câmera](https://jovi-smart-filter.vercel.app/app.html)
 
 ## 🎯 Problema
 
@@ -94,7 +94,7 @@ A detecção é explicável: a interface apresenta o motivo da recomendação e 
 
 > **Nota sobre a câmera:** o acesso ao dispositivo depende da permissão do navegador e de um contexto seguro (HTTPS ou localhost). Quando a câmera não está disponível, o protótipo utiliza cenas e leituras simuladas para demonstrar o mesmo fluxo de detecção e aplicação dos filtros.
 
-## 🧰 Tecnologias
+## 🔨 Stack
 
 - **Frontend:** HTML5, CSS3 e JavaScript (ES6+).
 - **Estilização:** Tailwind CSS.
@@ -102,35 +102,6 @@ A detecção é explicável: a interface apresenta o motivo da recomendação e 
 - **Publicação:** Vercel.
 
 O projeto não utiliza framework frontend nem exige etapa de build para execução. O CSS do Tailwind já está compilado e as bibliotecas GSAP são mantidas localmente.
-
-## 🚀 Executar localmente
-
-Requisitos: Python 3 e, para recompilar o CSS ou gerar os materiais de apresentação, Node.js.
-
-```bash
-git clone https://github.com/vininoronha21/jovi-smart-filter.git
-cd jovi-smart-filter
-python3 -m http.server 8000
-```
-
-Acesse [http://localhost:8000](http://localhost:8000).
-
-Para iniciar pelo script do projeto:
-
-```bash
-npm run serve
-```
-
-A câmera exige HTTPS ou localhost. Ao abrir o arquivo diretamente pelo sistema de arquivos, o navegador pode bloquear o acesso à câmera.
-
-### Outros comandos
-
-```bash
-npm install
-npm run css        # recompila o CSS do Tailwind
-npm run pdf        # gera a apresentação em PDF
-npm run video      # gera o vídeo da apresentação (macOS)
-```
 
 ## 📂 Estrutura do projeto
 
@@ -150,6 +121,10 @@ npm run video      # gera o vídeo da apresentação (macOS)
 └── docs/               # Materiais complementares
 ```
 
-## 🎓 Contexto
+## 🎓 Contexto e Premiação
+Projeto acadêmico desenvolvido para o Challenge JOVI — FIAP. Apresentado no evento anual NEXT da FIAP que reúne estudantes de todas as modalidades e cursos. O projeto conquistou o 3º lugar entre as melhores soluções, subindo ao pódio. A marca e o produto são utilizados exclusivamente para fins educacionais.
 
-Projeto acadêmico desenvolvido para o **Challenge JOVI — FIAP**. A marca e o produto são utilizados exclusivamente para fins educacionais.
+## 📝 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
