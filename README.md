@@ -122,7 +122,7 @@ O projeto não utiliza framework frontend nem exige etapa de build para execuç�
 ```
 
 ## 🎓 Contexto e Premiação
-Projeto acadêmico desenvolvido para o Challenge JOVI — FIAP. Apresentado no evento anual NEXT da FIAP que reúne estudantes de todas as modalidades e cursos. O projeto conquistou o 3º lugar entre as melhores soluções, subindo ao pódio. A marca e o produto são utilizados exclusivamente para fins educacionais.
+Projeto acadêmico desenvolvido para o Challenge JOVI — FIAP. Apresentado no evento anual NEXT da FIAP 2026 que reúne estudantes de todas as modalidades e cursos. O projeto conquistou o 3º lugar entre as melhores soluções, subindo ao pódio. A marca e o produto são utilizados exclusivamente para fins educacionais.
 
 ## 📝 Licença
 
